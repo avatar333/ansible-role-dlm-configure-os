@@ -50,6 +50,7 @@
     - gcc-c++
     - policycoreutils-python
     - bash-completion
+    - mlocate
   ignore_errors: yes
   tags: packages
 

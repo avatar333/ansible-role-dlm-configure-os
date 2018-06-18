@@ -13,6 +13,35 @@
     state: directory
     mode: 0700
 
+- name: "Open relevant firewalld ports"
+  firewalld:
+    port: "{{ item }}/tcp"
+    permanent: true
+    immediate: true
+    state: enabled
+  with_items:
+    - 32400 # Plex
+    - 8112 # Deluge
+    - 8989 # Sonarr
+    - 8080 # Sabnzbd HTTP
+    - 9090 # Sabnzbd HTTPS
+    - 8090 # Mylar
+    - 8000 # Munin
+
+- name: "Open relevant firewalld service ports"
+  firewalld:
+    service: "{{ item }}"
+    permanent: true
+    immediate: true
+    state: enabled
+  with_items:
+    - http
+    - https
+    - nfs
+    - nfs3
+    - samba
+    - samba-client
+
 #- name: "Change default SSH port"
 #  lineinfile:
 #    path: /etc/ssh/sshd_config
@@ -27,3 +56,4 @@
 #    state: present
 #  notify:
 #    - restart sshd
+

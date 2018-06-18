@@ -1,0 +1,29 @@
+---
+
+- name: "Allow root login only on console"
+  lineinfile:
+    path: /etc/securetty
+    state: present
+    insertafter: EOF
+    line: tty1
+
+- name: "Secure root home"
+  file:
+    path: /root
+    state: directory
+    mode: 0700
+
+#- name: "Change default SSH port"
+#  lineinfile:
+#    path: /etc/ssh/sshd_config
+#    regexp: '#Port 22'
+#    line: 'Port {{ SSH_PORT }}'
+
+#- name: "Allow port change through SELinux"
+#  seport:
+#    ports: "{{ SSH_PORT }}"
+#    proto: tcp
+#    setype: ssh_port_t
+#    state: present
+#  notify:
+#    - restart sshd

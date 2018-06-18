@@ -1,17 +1,9 @@
 ---
 # tasks file for ansible-role-dlm-configure-os
 
-- name: "Update OS"
-  yum:
-    name: *
-    state: latest
+- include: configure_OS.yml
+  tags: configure_OS
 
-- name: "Enable EPEL repo"
-  yum:
-    enablerepo: "epel"
-    state: present
+- include: configure_security.yml
+  tags: configure_security
 
-- name: "Install Nux Dextop repo"
-  yum:
-    name: http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro
-    state: present

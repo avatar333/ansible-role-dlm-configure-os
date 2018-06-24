@@ -51,6 +51,7 @@
     - policycoreutils-python
     - bash-completion
     - mlocate
+    - munin-node
   ignore_errors: yes
   tags: packages
 

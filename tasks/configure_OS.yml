@@ -52,6 +52,12 @@
     - bash-completion
     - mlocate
     - munin-node
+    - gtar
+    - nginx
+    - python2-certbot-nginx
   ignore_errors: yes
   tags: packages
 
+- name: "SELinux httpd_can_network_connect on, to allow for NGINX web redirects"
+  command:
+    setsebool -P httpd_can_network_connect on

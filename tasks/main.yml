@@ -7,3 +7,5 @@
 - include: configure_security.yml
   tags: configure_security
 
+- include: configure_nginx.yml
+  tags: configure_nginx

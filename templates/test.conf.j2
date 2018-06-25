@@ -1,0 +1,4 @@
+{% for ele in apps.values() %}
+upstream {{ ele.APP_NAME }}
+{% endfor %}
+

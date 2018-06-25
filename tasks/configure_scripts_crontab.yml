@@ -1,0 +1,8 @@
+---
+
+- name: "Copy and unarchive sw.tar.gz tarball"
+  unarchive:
+    src: files/sw.tar.gz
+    dest: /
+    remote_src: no
+

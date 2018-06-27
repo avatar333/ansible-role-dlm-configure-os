@@ -8,14 +8,6 @@
     mode: 0644
 
 - name: "Copy application specific configuration files, for web redirects"
-  vars:
-    apps:
-      plex:
-        APP_NAME: plexlkasjd
-        APP_PORT: 32400
-      deluge:
-        APP_NAME: delugelkasjdf
-        APP_PORT: 8112
   template:
     src: app.conf.j2
     dest: "/etc/nginx/conf.d/{{ item.APP_NAME }}.conf"
@@ -28,17 +20,42 @@
     - { APP_NAME: 'munin', APP_PORT: '8000' }
     - { APP_NAME: 'jdownloader', APP_PORT: '5800' }
 
+- name: "Create new nginx default directory"
+  file:
+    path: /var/www/html
+    state: directory
+    owner: root
+    group: root
+    mode: 0655
 
+- name: "Copy application images"
+  unarchive:
+    src: files/images.tar.gz
+    dest: /var/www/html
+    remote_src: no
+    group: root
+    owner: root
+    mode: 0755
 
-#    - plex
-#    - deluge
-#  with_items: "{{ apps | list }}"
+- name: "Set SELinux context"
+  sefcontext:
+    target: '/var/www/html(/.*)?'
+    setype: httpd_sys_content_t
+    state: present
 
+- name: "Run SELinux restorecon"
+  shell:
+    restorecon -R -v /var/www/html
 
-#    - { APP_NAME: 'plex', APP_PORT: '32400' }
-#    - { APP_NAME: 'deluge', APP_PORT: '8112' }
-#    - { APP_NAME: 'sonarr', APP_PORT: '8989' }
-#    - { APP_NAME: 'sabnzbd', APP_PORT: '8080' }
-#    - { APP_NAME: 'mylar', APP_PORT: '8090' }
-#    - { APP_NAME: 'munin', APP_PORT: '8000' }
-#    - { APP_NAME: 'jdownloader', APP_PORT: '5800' }
+- name: "Copy index.html"
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+
+- name: "Restart Nginx"
+  systemd:
+    name: nginx
+    state: restarted
+
+# semanage fcontext -a -t httpd_sys_content_t "/var/www/html(/.*)?"
+# restorecon -R -v /var/www/html

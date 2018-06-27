@@ -52,9 +52,9 @@
     - bash-completion
     - mlocate
     - munin-node
-    - gtar
     - nginx
     - python2-certbot-nginx
+    - ncompress
   ignore_errors: yes
   tags: packages
 

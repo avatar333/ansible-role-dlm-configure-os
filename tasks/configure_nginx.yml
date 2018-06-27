@@ -18,7 +18,14 @@
     - { APP_NAME: 'sabnzbd', APP_PORT: '8080' }
     - { APP_NAME: 'mylar', APP_PORT: '8090' }
     - { APP_NAME: 'munin', APP_PORT: '8000' }
+
+- name: "Copy application specific configuration files, for web redirects"
+  template:
+    src: jdownloader-2.conf.j2
+    dest: "/etc/nginx/conf.d/{{ item.APP_NAME }}.conf"
+  with_items:
     - { APP_NAME: 'jdownloader', APP_PORT: '5800' }
+
 
 - name: "Create new nginx default directory"
   file:

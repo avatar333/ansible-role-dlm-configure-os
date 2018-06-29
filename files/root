@@ -1,0 +1,2 @@
+# Update DNS
+*/5 * * * *	/usr/local/bin/dnsactual.sh

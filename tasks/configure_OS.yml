@@ -55,6 +55,7 @@
     - nginx
     - python2-certbot-nginx
     - ncompress
+    - git
   ignore_errors: yes
   tags: packages
 

@@ -42,6 +42,7 @@
     - nfs3
     - samba
     - samba-client
+    - dns
 
 #- name: "Change default SSH port"
 #  lineinfile:

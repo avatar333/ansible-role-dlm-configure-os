@@ -9,3 +9,9 @@
 
 - include: configure_nginx.yml
   tags: configure_nginx
+
+- include: configure_mega.yml
+  tags: configure_mega
+
+- include: configure_scripts_crontab.yml
+  tags: configure_scripts_crontab

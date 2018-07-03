@@ -1,0 +1,29 @@
+---
+
+- name: "Create Docker device thin profile for LVM2"
+  copy:
+    src: docker-thinpool.profile
+    dest: /etc/lvm/profile/docker-thinpool.profile
+
+- name: "Copy sfdisk partition file"
+  copy:
+    src: sfdisk.txt
+    dest: /tmp
+
+- name: "Create partition"
+  shell: sfdisk /dev/vdb < /tmp/sfdisk.txt
+
+
+- name: "Create LVM volume"
+  vars:
+    RAW_DEVICE: vdb1
+  command:
+    "{{ item }}"
+  with_items:
+    - pvcreate /dev/{{RAW_DEVICE}} 
+    - vgcreate docker /dev/{{RAW_DEVICE}}
+    - lvcreate --wipesignatures y -n thinpool docker -l 95%VG
+    - lvcreate --wipesignatures y -n thinpoolmeta docker -l 1%VG
+    - lvconvert -y --zero n -c 512k --thinpool docker/thinpool --poolmetadata docker/thinpoolmeta
+    - lvchange --metadataprofile docker-thinpool docker/thinpool
+    - lvs -o+seg_monitor

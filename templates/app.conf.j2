@@ -1,5 +1,5 @@
 upstream {{ item.APP_NAME }}  {
-  server {{ ansible_eth0.ipv4.address }}:{{ item.APP_PORT }} max_fails=3 fail_timeout=10s;
+  server {{ ansible_default_ipv4.address }}:{{ item.APP_PORT }} max_fails=3 fail_timeout=10s;
   least_conn;
 }
 

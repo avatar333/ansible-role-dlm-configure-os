@@ -4,12 +4,12 @@
 # We will try out megacmd first..
 
 # megacmd from: https://mega.nz/cmd
-- name: "Copy RPM file to remote server"
+- name: "Copy megacmd-CentOS_7.x86_64.rpm RPM file to remote server"
   copy:
     src: files/megacmd-CentOS_7.x86_64.rpm
     dest: /tmp
   
-- name: "Install rpm from local file"
+- name: "Install megacmd-CentOS_7.x86_64.rpm rpm from local file"
   yum:
     name: /tmp/megacmd-CentOS_7.x86_64.rpm
     state: present 

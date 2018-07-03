@@ -28,6 +28,7 @@
     - 8090 # Mylar
     - 8000 # Munin
     - 5800 # JDownloader-2
+    - 4949 # munin-node
 
 - name: "Open relevant firewalld service ports"
   firewalld:

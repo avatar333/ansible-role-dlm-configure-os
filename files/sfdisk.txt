@@ -1,0 +1,4 @@
+# partition table of /dev/vdb
+unit: sectors
+
+/dev/vdb1 : start=       2048, size=, Id=8e

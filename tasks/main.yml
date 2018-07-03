@@ -15,3 +15,9 @@
 
 - include: configure_scripts_crontab.yml
   tags: configure_scripts_crontab
+
+- include: configure_direct-lvm_thinpool.yml
+  tags: configure_direct-lvm_thinpool
+
+#- include: configure_host_apps.yml
+#  tags: configure_host_apps

@@ -1,4 +1,5 @@
-# partition table of /dev/vdb
+# partition table of /dev/sdb3
+# for size=, 512000 = 500MB, 20970496 = 20GB, 20970496 = 50GB
 unit: sectors
 
-/dev/vdb1 : start=       2048, size=, Id=8e
+/dev/sda3 : start=       87164927, size=20970496, Id=8e

@@ -63,6 +63,8 @@
   systemd:
     name: nginx
     state: restarted
+    daemon_reload: yes
+    enabled: yes
 
 # semanage fcontext -a -t httpd_sys_content_t "/var/www/html(/.*)?"
 # restorecon -R -v /var/www/html

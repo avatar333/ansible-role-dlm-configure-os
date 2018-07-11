@@ -57,6 +57,7 @@
     - ncompress
     - git
     - perl-Net-CIDR.noarch
+    - httpd-tools
   ignore_errors: yes
   tags: packages
 
@@ -68,3 +69,9 @@
   systemd:
     name: chronyd
     state: restarted
+
+- name: "set -o vi"
+  lineinfile:
+    path: /etc/profile
+    insertafter: EOF
+    line: 'set -o vi'

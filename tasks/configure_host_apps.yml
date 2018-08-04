@@ -9,3 +9,8 @@
     mode: 0644
   notify:
     - restart munin-node
+
+- name: "Install Plex Media Server"
+  yum:
+    name: plexmediaserver
+    state: latest

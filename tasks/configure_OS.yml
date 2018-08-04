@@ -28,6 +28,13 @@
     - https://download1.rpmfusion.org/free/el/rpmfusion-free-release-7.noarch.rpm
     - https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-7.noarch.rpm
 
+- name: "Instal Plex Media Server repo file"
+  copy:
+    src: files/plex.repo
+    dest: /etc/yum.repo.d
+    mode: 0644
+    force: yes
+
 # Install additional packages for general administration usage
 - name: "Install additional packages"
   yum:

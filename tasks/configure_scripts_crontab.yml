@@ -16,7 +16,7 @@
     - { URL: 'https://github.com/avatar333/bash-create-symlink-nests.git', DESTDIR: /tmp/git/bash-create-symlink-nests }
     - { URL: 'https://github.com/avatar333/bash-docker_versions.git', DESTDIR: /tmp/git/bash-docker_versions }
 
-- name: "Copy DNS update script to /usr/local/bin"
+- name: "Copy scripts to /usr/local/bin"
   copy:
     src: "{{ item }}"
     dest: /usr/local/bin

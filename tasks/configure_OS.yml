@@ -58,6 +58,8 @@
     - git
     - perl-Net-CIDR.noarch
     - httpd-tools
+    - psmisc
+    - ftp
   ignore_errors: yes
   tags: packages
 

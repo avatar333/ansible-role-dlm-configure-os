@@ -1,14 +1,20 @@
 ---
 
+- name: "Remove temporary directory"
+  file:
+    path: /tmp/git
+    state: absent
+    mode: 0755
+    
 - name: "Checkout some git repos for scripts"
   git:
     repo: "{{ item.URL }}" 
     dest: "{{ item.DESTDIR }}"
     force: yes
   with_items:
-    - { URL: 'https://github.com/avatar333/bash-dnsactual.git', DESTDIR: /tmp/bash-dnsactual }
-    - { URL: 'https://github.com/avatar333/bash-create-symlink-nests.git', DESTDIR: /tmp/bash-create-symlink-nests }
-    - { URL: 'https://github.com/avatar333/bash-docker_versions.git', DESTDIR: /tmp/bash-docker_versions }
+    - { URL: 'https://github.com/avatar333/bash-dnsactual.git', DESTDIR: /tmp/git/bash-dnsactual }
+    - { URL: 'https://github.com/avatar333/bash-create-symlink-nests.git', DESTDIR: /tmp/git/bash-create-symlink-nests }
+    - { URL: 'https://github.com/avatar333/bash-docker_versions.git', DESTDIR: /tmp/git/bash-docker_versions }
 
 - name: "Copy DNS update script to /usr/local/bin"
   copy:
@@ -17,9 +23,9 @@
     mode: 0755
     remote_src: yes
   with_items:
-    - /tmp/bash-dnsactual/dnsactual.sh
-    - /tmp/bash-create-symlink-nests/create-symlink-nests.sh
-    - /tmp/bash-docker_versions/docker_versions.sh
+    - /tmp/git/bash-dnsactual/dnsactual.sh
+    - /tmp/git/bash-create-symlink-nests/create-symlink-nests.sh
+    - /tmp/git/bash-docker_versions/docker_versions.sh
 
 - name: "Copy root crontab"
   copy:

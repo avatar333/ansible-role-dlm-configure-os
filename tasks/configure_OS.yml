@@ -67,6 +67,8 @@
     - httpd-tools
     - psmisc
     - ftp
+    - links
+    - lynx
   ignore_errors: yes
   tags: packages
 

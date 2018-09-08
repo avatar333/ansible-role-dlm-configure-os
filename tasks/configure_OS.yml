@@ -69,6 +69,16 @@
     - ftp
     - links
     - lynx
+    - ntfsprogs.x86_64
+    - ntfs-3g.x86_64
+    - yum-axelget
+    - yum-fast-downloader
+    - psmisc
+    - lsof
+    - vim
+    - symlinks
+    - yum-cron
+    - smartmontools
   ignore_errors: yes
   tags: packages
 

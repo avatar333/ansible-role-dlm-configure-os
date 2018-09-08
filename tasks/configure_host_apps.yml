@@ -10,7 +10,17 @@
   notify:
     - restart munin-node
 
+- name: "Copy plex.repo"
+  copy:
+    src: files/plex.repo
+    dest: /etc/yum.repos.d
+    owner: root
+    group: root
+    mode: 0644
+  tags: host_plex 
+
 - name: "Install Plex Media Server"
   yum:
     name: plexmediaserver
     state: latest
+  tags: host_plex 

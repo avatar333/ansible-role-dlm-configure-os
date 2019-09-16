@@ -1,2 +1,3 @@
 # Update DNS
-*/5 * * * *	/usr/local/bin/dnsactual.sh
+#*/5 * * * *	/usr/local/bin/dnsactual.sh
+*/5 * * * *	/usr/local/bin/bash-set-media-permissions.sh

@@ -79,6 +79,7 @@
     - symlinks
     - yum-cron
     - smartmontools
+    - net-tools
   ignore_errors: yes
   tags: packages
 

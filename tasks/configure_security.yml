@@ -29,6 +29,7 @@
     - 8000 # Munin
     - 5800 # JDownloader-2
     - 4949 # munin-node
+    - 7878 # Radarr
 
 - name: "Open relevant firewalld service ports"
   firewalld:

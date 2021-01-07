@@ -6,6 +6,8 @@
     state: present
     insertafter: EOF
     line: tty1
+  ignore_errors: true
+
 
 - name: "Secure root home"
   file:

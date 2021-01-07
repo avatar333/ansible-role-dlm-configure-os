@@ -11,6 +11,7 @@
   template:
     src: app.conf.j2
     dest: "/etc/nginx/conf.d/{{ item.APP_NAME }}.conf"
+    backup: true
   with_items:
     - { APP_NAME: 'plex', APP_PORT: '32400' }
     - { APP_NAME: 'deluge', APP_PORT: '8112' }
@@ -18,6 +19,8 @@
     - { APP_NAME: 'sonarr', APP_PORT: '7878' }
     - { APP_NAME: 'sabnzbd', APP_PORT: '8080' }
     - { APP_NAME: 'mylar', APP_PORT: '8090' }
+    - { APP_NAME: 'prometheus', APP_PORT: '9090' }
+    - { APP_NAME: 'grafana', APP_PORT: '3000' }
 #    - { APP_NAME: 'munin', APP_PORT: '8000' }
 
 - name: "Copy application specific configuration files, for web redirects"
